@@ -4,7 +4,7 @@
 
 import {Request, Response, Express} from "express";
 import UserDao from "../daos/UserDao";
-import UserControllerI from "../interfaces/UserController";
+import UserControllerI from "../interfaces/UserControllerI";
 import User from "../models/User";
 
 /**

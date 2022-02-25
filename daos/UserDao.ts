@@ -5,7 +5,7 @@
 
 import User from "../models/User";
 import UserModel from "../Mangoose/UserModel";
-import UserDaoI from "../interfaces/UserDao";
+import UserDaoI from "../interfaces/UserDaoI";
 
 /**
  * @class UserDao Implements Data Access Object managing data storage
