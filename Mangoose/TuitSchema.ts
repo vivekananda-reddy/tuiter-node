@@ -1,3 +1,7 @@
+/**
+ * @file Implements mongoose schema to CRUD
+ * documents in the Tuits collection
+ */
 import mongoose, {Schema} from "mongoose";
 import Tuit from "../models/Tuit";
 

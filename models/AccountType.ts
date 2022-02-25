@@ -1,3 +1,6 @@
+/**
+ * @file Enum representing account type for a user
+ */
 enum AccountType {
     Personal = 'PERSONAL',
     Academic = 'ACADEMIC',

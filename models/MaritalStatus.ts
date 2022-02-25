@@ -1,3 +1,6 @@
+/**
+ * @file Enum representing marital status for a user
+ */
 enum MaritalStatus {
     Married = 'MARRIED',
     Single = 'SINGLE',
