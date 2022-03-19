@@ -26,8 +26,10 @@ import MessageController from "./controllers/MessageController";
 
 mongoose.connect("mongodb+srv://admin:mongopassword@cluster0.hfxse.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 const app = express();
+const cors = require('cors')
 
 app.use(express.json())
+app.use(cors());
 
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
