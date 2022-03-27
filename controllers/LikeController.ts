@@ -36,7 +36,7 @@ export default class LikeController implements LikeControllerI {
     public static getInstance = (app: Express): LikeController => {
         if(LikeController.likeController === null) {
             LikeController.likeController = new LikeController();
-            app.get("/api/users/:uid/likes", LikeController.likeController.findAllTuitsLikedByUser);
+            //app.get("/api/users/:uid/likes", LikeController.likeController.findAllTuitsLikedByUser);
             app.get("/api/tuits/:tid/likes", LikeController.likeController.findAllUsersThatLikedTuit);
             app.put("/api/users/:uid/likes/:tid", LikeController.likeController.userTogglesTuitLikes);
         }
@@ -63,20 +63,20 @@ export default class LikeController implements LikeControllerI {
      * @param {Response} res Represents response to client, including the
      * body formatted as JSON arrays containing the tuit objects that were liked
      */
-    findAllTuitsLikedByUser = (req: Request, res: Response) => {
-        const uid = req.params.uid;
-        // @ts-ignore
-        const profile = req.session['profile'];
-        const userId = uid === "me" && profile ?
-            profile._id : uid;
-
-        LikeController.likeDao.findAllTuitsLikedByUser(userId)
-            .then(likes => {
-                const likesNonNullTuits = likes.filter(like => like.tuit);
-                const tuitsFromLikes = likesNonNullTuits.map(like => like.tuit);
-                res.json(tuitsFromLikes);
-            });
-    }
+    // findAllTuitsLikedByUser = (req: Request, res: Response) => {
+    //     const uid = req.params.uid;
+    //     // @ts-ignore
+    //     const profile = req.session['profile'];
+    //     const userId = uid === "me" && profile ?
+    //         profile._id : uid;
+    //
+    //     LikeController.likeDao.findAllTuitsLikedByUser(userId)
+    //         .then(likes => {
+    //             const likesNonNullTuits = likes.filter(like => like.tuit);
+    //             const tuitsFromLikes = likesNonNullTuits.map(like => like.tuit);
+    //             res.json(tuitsFromLikes);
+    //         });
+    // }
 
     
     /**
