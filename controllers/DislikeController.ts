@@ -110,6 +110,7 @@ export default class DislikeController implements DislikeControllerI {
             await tuitDao.updateDislikes(tid, tuit.stats);
             res.sendStatus(200);
         } catch (e) {
+            console.log(e);
             res.sendStatus(404);
         }
     }
