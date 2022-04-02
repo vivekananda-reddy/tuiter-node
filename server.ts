@@ -24,11 +24,6 @@ const cors = require("cors");
 const session = require("express-session");
 const dotenv = require('dotenv');
 dotenv.config();
-const app = express();
-app.use(cors({
-    credentials: true,
-    origin: process.env.ORIGIN_REACT_PATH
-}));
 
 // build the connection string
 const PROTOCOL = "mongodb+srv";
@@ -43,6 +38,11 @@ const connectionString = "mongodb+srv://admin:mongopassword@cluster0.hfxse.mongo
 
 mongoose.connect(connectionString);
 
+const app = express();
+app.use(cors({
+    credentials: true,
+    origin: process.env.ORIGIN_REACT_PATH
+}));
 
 //const SECRET = 'process.env.EXPRESS_SESSION_SECRET';
 let sess = {
@@ -51,14 +51,14 @@ let sess = {
     resave: true,
     cookie: {
         sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
-        secure: false,
+        secure: process.env.NODE_ENV === "production",
     }
 }
 
 if (process.env.NODE_ENV === 'production') {
 
     app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true;
+
 }
 
 app.use(session(sess))
